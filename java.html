@@ -6,27 +6,814 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="java.css">
     <link rel="stylesheet" href="java.js">
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.slim.min.js" integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>
+    <style>
+        body
+        {
+            background-color: rgb(30, 0, 70);
+            font-family: 'Cairo', sans-serif;
+                }
+        .taskes-table
+            {
+                background-color: rgb(201, 192, 209);
+                width: 60%;
+                /* height: 500px; */
+                margin-top: 130px;
+            }
+        .circular
+            {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                border: none;
+                font-size: 20px;
+                box-shadow:0px 3px 5px rgba(136, 136, 136, 0.38) ;
+                line-height: 0;
+            }
+        .task
+            {
+                display: flex;
+                background-color: rgb(255, 255, 255);
+                padding: 4px;
+                border-bottom: solid black 1px;
+                transition:box-shadow 0.2s;
+            }
+        .done 
+        {
+            background-color: rgb(158, 253, 160);
+        }
+        .task:hover
+            {
+                box-shadow: 0px 3px 15px rgba(97, 97, 97, 0.843);
+            }
+    </style>
 </head>
-<body>
-    <h2>hello am ayat</h2>
-    <h3 id="result"></h3>
+<body> 
+    <!-- <h2 id="title">hello am ayat</h2> -->
+    <!-- <input id="string-input" type="text">
+    <button id="submit-btn">submit</button>
+    <h3 id="result"></h3> -->
+
+    <!-- <div style="text-align: center; background-color: rgb(196, 133, 50);">
+
+        <div>
+            <h3>الوزن</h3>
+            <input type="text" id="weight-input">
+        </div>
+
+        <div>
+            <h3>الطول</h3>
+            <input type="text" id="height-input">
+        </div>
+
+        <button id="submit-btn" style="margin:10px;">أحسب</button>
+         
+        <div>
+            <h4 id="bmi"></h4>
+            <h3 id="bmi-category"></h3>
+        </div>
+
+      </div> -->
+    <!-- <div id="students">
+
+    </div> -->
+    <!-- <input id="arr-input" type="text">
+    <button id="submit2-btn">submit</button>
+    <button id="delet-btn">delet</button>
+    <div>
+        <h4 id="nams"></h4>
+        <h3 id="bmi-category"></h3>
+    </div> -->
+    <!-- <div id="result-loop" style="text-align: center; font-size: 60px;"></div> -->
+    <!-- <div style="text-align: center; font-size: 50px;">
+    Vowels Letters: [A,E,I,O,U] <br>
+    <input id="text" type="text">
+    <button id="submit">submit</button>
+    <h2 id="ruslt-los"></h2>
+   </div> -->
+   <!-- <div style="display: flex; justify-content: center; align-items: center; background-color: rgb(0, 95, 107);height:100vh,width:100% ;"> -->
+    <!-- <table id="studens" style="width: 50%; font-size: 25px; color: white;" >
+        <tr>
+            <th>name</th>
+            <th>age</th>
+            <th>study</th>
+            <th>univarsete</th>
+        </tr>
+    </table>
+</div> -->
+<!-- /*المشروع النهائي*/ -->
+<!-- هاد الدف الكبير -->
+<div style="direction:rtl"> 
+    <!-- هاد الف لتوسيط العناصر -->
+    <div style="display:flex;justify-content: center;align-items: center">
+        <!-- وهاد الدف الي رح يحمل كل الشكل النهائي -->
+        <div class="taskes-table">
+            <!-- وهاد الدف الي رح نعمل فيه قسم الهيد -->
+            <div style="text-align: center;width: 100%;background: rgb(194, 133, 255);color: rgb(255, 255, 255); padding-top: 8px;padding-bottom: 8px;">
+                <h1 style="display: inline">مهامي</h1>
+                <button id="circular-btn" class="circular" style="float: right;background: white; margin-right: 10px"><span class="material-symbols-outlined">
+                    add_circle
+                    </span></button>
+            </div>
+            <!-- وهاد الدف الي رح نعمل فيه قسم البدي الي هو المهمات -->
+            <div id="taskes" style="padding: 20px;">
+                <!-- وهاد الدف الخاص في المهمة الأولى -->
+                <div class="task">
+                    <!-- هاد الدف للعنوان والتاريخ -->
+                    <div style="width: 70%">
+                        <h2>قراءة كتاب</h2>
+                        <div>
+                            <span class="material-symbols-outlined">
+                                calendar_month
+                                </span> <span>10-10-2023</span>
+                        </div>
+                    </div>
+                    <!-- هاد الدف للتعديل والحذف والهدف المنجز  -->
+                    <div style="display: flex; justify-content:space-between; align-items: center;width: 20%;">
+                        <button class="circular" style="background: rgb(148, 30, 30); color: rgba(255, 255, 255, 0.918);"><span class="material-symbols-outlined">
+                            delete
+                            </span></button>
+
+                        <button class="circular" style="background: rgb(44, 148, 30); color: rgb(255, 255, 255);"><span class="material-symbols-outlined">
+                            done
+                            </span></button>
+
+                        <button class="circular" style="background: rgb(12, 47, 99); color: rgb(255, 255, 255);"><span class="material-symbols-outlined">
+                            edit
+                            </span></button>
+                    </div>
+                </div>
+                <div class="task">
+                    <!-- هاد الدف للعنوان والتاريخ -->
+                    <div style="width: 70%">
+                        <h2>قراءة كتاب</h2>
+                        <div>
+                            <span class="material-symbols-outlined">
+                                calendar_month
+                                </span> <span>10-10-2023</span>
+                        </div>
+                    </div>
+                    <!-- هاد الدف للتعديل والحذف والهدف المنجز  -->
+                    <div style="display: flex; justify-content:space-between; align-items: center;width: 20%;">
+                        <button class="circular" style="background: rgb(148, 30, 30); color: rgba(255, 255, 255, 0.918);"><span class="material-symbols-outlined">
+                            delete
+                            </span></button>
+
+                        <button class="circular" style="background: rgb(44, 148, 30); color: rgb(255, 255, 255);"><span class="material-symbols-outlined">
+                            done
+                            </span></button>
+
+                        <button class="circular" style="background: rgb(12, 47, 99); color: rgb(255, 255, 255);"><span class="material-symbols-outlined">
+                            edit
+                            </span></button>
+                    </div>
+                </div>
+                <div class="task">
+                    <!-- هاد الدف للعنوان والتاريخ -->
+                    <div style="width: 70%">
+                        <h2>قراءة كتاب</h2>
+                        <div>
+                            <span class="material-symbols-outlined">
+                                calendar_month
+                                </span> <span>10-10-2023</span>
+                        </div>
+                    </div>
+                    <!-- هاد الدف للتعديل والحذف والهدف المنجز  -->
+                    <div style="display: flex; justify-content:space-between; align-items: center;width: 20%;">
+                        <button class="circular" style="background: rgb(148, 30, 30); color: rgba(255, 255, 255, 0.918);"><span class="material-symbols-outlined">
+                            delete
+                            </span></button>
+
+                        <button class="circular" style="background: rgb(44, 148, 30); color: rgb(255, 255, 255);"><span class="material-symbols-outlined">
+                            done
+                            </span></button>
+
+                        <button class="circular" style="background: rgb(12, 47, 99); color: rgb(255, 255, 255);"><span class="material-symbols-outlined">
+                            edit
+                            </span></button>
+                    </div>
+                </div>
+                <div class="task">
+                    <!-- هاد الدف للعنوان والتاريخ -->
+                    <div style="width: 70%">
+                        <h2>قراءة كتاب</h2>
+                        <div>
+                            <span class="material-symbols-outlined">
+                                calendar_month
+                                </span> <span>10-10-2023</span>
+                        </div>
+                    </div>
+                    <!-- هاد الدف للتعديل والحذف والهدف المنجز  -->
+                    <div style="display: flex; justify-content:space-between; align-items: center;width: 20%;">
+                        <button class="circular" style="background: rgb(148, 30, 30); color: rgba(255, 255, 255, 0.918);"><span class="material-symbols-outlined">
+                            delete
+                            </span></button>
+
+                        <button class="circular" style="background: rgb(44, 148, 30); color: rgb(255, 255, 255);"><span class="material-symbols-outlined">
+                            done
+                            </span></button>
+
+                        <button class="circular" style="background: rgb(12, 47, 99); color: rgb(255, 255, 255);"><span class="material-symbols-outlined">
+                            edit
+                            </span></button>
+                    </div>
+                </div>
+                <div class="task">
+                    <!-- هاد الدف للعنوان والتاريخ -->
+                    <div style="width: 70%">
+                        <h2>قراءة كتاب</h2>
+                        <div>
+                            <span class="material-symbols-outlined">
+                                calendar_month
+                                </span> <span>10-10-2023</span>
+                        </div>
+                    </div>
+                    <!-- هاد الدف للتعديل والحذف والهدف المنجز  -->
+                    <div style="display: flex; justify-content:space-between; align-items: center;width: 20%;">
+                        <button class="circular" style="background: rgb(148, 30, 30); color: rgba(255, 255, 255, 0.918);"><span class="material-symbols-outlined">
+                            delete
+                            </span></button>
+
+                        <button class="circular" style="background: rgb(44, 148, 30); color: rgb(255, 255, 255);"><span class="material-symbols-outlined">
+                            done
+                            </span></button>
+
+                        <button class="circular" style="background: rgb(12, 47, 99); color: rgb(255, 255, 255);"><span class="material-symbols-outlined">
+                            edit
+                            </span></button>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /*نهاية المشروع*/ -->
 </body>
+<!-- <script>
+//     var number1 = 10
+//     var number2 = 4
+//     var sum = number1 + number2
+//     var sub = number1 - number2
+//     var mult = number1 * number2
+//     var div = number1 / number2
+//     var mod = number1 % number2
+//     var message = `First number is:${number1}\n Second number is:${number2}\n Sum is:${sum} Sub is:${sub}\n Mult is:${mult}\n Div is:${div}\n Mod is:${mod}`
+//     console.log(message)
+//     //في غلط مش عارفة من وين بعدين بنشوف
+//     // بدل ما اضل اكتب ؤخىسخمث تحت كل وحدة، بروح بعرف كمان متغير وبحط فيه كل قيم النتيجة، كما في الشكل التالي:
+//     // var massag = 'first number is:${number1}\nsecond number is:${number2}\nsum is:${sum}\nsub is:${sub}\nmult is:${mult}\ndiv is:${div}\nmod is:${mod}'
+//     document.getElementById("result").innerHTML = message
+//     // وهي دالة تستخدم مع المتغيرات التي يكون نوعها سترنغ والتي  تقون بعد الترتيب تبع الكلمات وتبدأ من صفر وبتعد كمان الفراغ على أنه عدد أو حرف وكمان ازا بدي اطبع  لعند الحرف الي بحمل رقم سبعة لازم في هذا النوع اني احط تمنية لانها بتفهم انه عند سبعة وقف ما تطبع لذلك وجوب طباعة رثم 8 حتى ينطبع رقم 8 \ substringاستخدام 
+//     // وبنستخدم كمان اشي اسمه خاصية الينث اي الطول وهي خاصية وليست دالة مثل الملاحظة الي فوق لذلك الخواص لا تحتاج إلى أقواس، وتعني هذه الخاصية أنه قديه طول الجملة يعني عدد الاحرف وهون بنبلش العد من واحد بس لازم نحسب الفراغ
+//     var title = "hello this is me"
+//     console.log(title.substring(0,16))
+//     console.log(title.length)
+//     var name = "ayat "
+//     console.log(`hello ${name}, how are you?`)
+//     // هلا بدي احل مهمة  التابعة لدرس 8 الخاص في السترينغ والدوال وأنواع الدوال واسم هذا التحدي هو تحدي السلاسل النصية
+//     var mystr = "Hello World"
+//     var allcabs = mystr. toUpperCase()
+//     console.log(mystr,'\n',allcabs)
+//     var stro = allcabs.replace("O", "Y")
+//     console.log(stro)
+//     var revstr = stro.split("").reverse().join("");
+//     console.log(revstr)
+// //    هلا تحدي رقم 2،  والي بتعلق بدنا نستهدف قيمة موجودة في الهيد داخل مثلا اتش 2 ونجري عليها تعديلات في السيكربت ومن ثم نعيدها بحلتها الجديدة لل اتش تو
+// var ali = document. getElementById("title").innerHTML
+//     // console.log(ali)
+//     var ayat = ali. toUpperCase()
+//     // console.log(ali,'\n',ayat)
+//     var baba = ayat.replace("O", "Y")
+//     // console.log(baba)
+//     var mama = baba.split("").reverse().join("");
+//     // console.log(revstr)
+//     document. getElementById("result").innerHTML = `${ali}---${ayat}---${baba}---${mama}---`
+//     // ----------------------------------------------------------------------------------------------
+//     // حل المتعلقة بأنه نعمل انبت وبوتون في الاتش تي ام ال ونروح نربط الزر بالسيكربت ومن ثم داخل الفنكشن نلصق النطاق البرمجي تبع مهمة درس 8 الجزء 1 أو 2  بعدين نعدل على المتغير الرئيسي أنه نربطه في الأنبت وبعدين آخر سطر بنروح نعمل داكيمنت للريزلت وهيك بنكون خلصنا وكل ما ادخلنا شي في التيكست رح يجري عليه التعديلات اللازمة ومن ثم يظهره على صفحة الويب  ويتم ذلك كالتالي:
+//     document. getElementById("submit-btn").addEventListener("click", function(){
+//         var aymn = document. getElementById("string-input").value
+//         console.log(aymn)
+//         var aya = aymn. toUpperCase()
+//         // console.log(ali,'\n',ayat)
+//         var bobo = aya.replace("O", "Y")
+//         // console.log(baba)
+//         var momo = bobo.split("").reverse().join("");
+//         // console.log(revstr)
+//         document. getElementById("result").innerHTML = `${aymn}---${aya}---${bobo}---${momo}---`
+//     })
+//     //  Booleen هلا رح نحكي عن القيم المنطقية-درس رقم10
+//     var r = true
+//     console.log(r)
+//     var v = false
+//     console.log(v)
+//     console.log(typeof r, v)
+//     // هلا بدنا نعمل مقارنات بين المتغيرات لنحصل على إجابات ترو أو فولز تمام
+//     var b = 10
+//     var d = 20
+//     console.log(b>d)  /*الجواب غلط*/  
+//     console.log(b<d)   /*الجواب صح*/
+//     console.log(b==d)   /*الجواب غلط*/
+
+//     console.log(b>=d)  /*الجواب غلط*/  
+//     console.log(b<=d)   /*الجواب صح*/
+//     console.log(b!=d)   /*الجواب صح*/
+
+//     //  and  && درس جديد رقم 11 حول كيفيقة الجمع بين أكثر من قيمة منطقية يعني عبارات منطقية مركبة زي أنه نستخدمة  للدلالة على كلمة 
+//     /* 1 and\&& */
+//     var c = 20
+//     console.log(c< 30 && c> 20 && c<25)
+//     /*: كمان بقدر أحط أكتر من متغير كالتالي*/
+//     var c = 20
+//     var c = 7
+//     console.log(c< 30 && c> 20 && c <25 && f > 5 && f <4  && f > 6)
+//     /* 2 or\|| */
+//     var k = 20
+//     var z = 7
+//     console.log(k < 15 || z > 20)
+//     var k = 20
+//     var z = 7
+//     var j = 10
+//     console.log(k < 15 || z > 20 || j == 10)
+//    // الدرس رقم 13 وهو تحويل أنواع البيانات من متغير لآخركالتالي
+//    /* في حال بدي أحول من استرنغ غلى نمبر*/
+//    var e = "20"
+//    var q = "7"
+//    console.log(Number(e)+Number(q))
+//     /* في حال بدي أحول من نمبر إلى استرنغ*/
+//    var e = 20
+//    var q = 7
+//    console.log(String(e)+String(q))
+//    var e = 20
+//    var q = 7
+//    console.log(Boolean(e)+Boolean(q))
+//    var e = "20"
+//    var q = "7"
+//    console.log(Boolean(e)+Boolean(q))
+//  // الدرس رقم 14 وهو العبارات الشرطية أف وإلس كالتالي
+//    var age = 35
+//    if (age <= 59){
+//     console.log("young man")
+//    }else{
+//     console.log("old man")
+//    }
+//    // الدرس رقم 15 وهو العبارات الشرطية أف وإلس المتعددة يعني أكثر من عبارة كالتالي
+//    var omer = 80
+//    if (omer >= 60){
+//     console.log("old man")
+//    }else if (omer >= 40 && omer < 60){
+//     console.log("mid man")
+//    }else{
+//     console.log("young man")
+//    }
+//    console.log("done")
+//    /*
+//    في عبارة إلس أف الشرط التاني الي بعد اشارة الاند بنقدر نستغني عنه لانه
+//     عبارة إلس أف هي تابعة لعبارة إف الي فوقها أي غير مستقلة في حد ذاتها 
+//     وفي شرط أف مكتوب أنه ازا كانت قيمة 
+//     المتغير أكبر أو تساوي 60 لذلك فش داعي أرجع أكتبه في عبارة إلس أف
+//    */
+//    var omer = 80
+//    if (omer >= 60){
+//     console.log("old man")
+//    }else if (omer >= 40){
+//     console.log("mid man")
+//    }else{
+//     console.log("young man")
+//    }
+//    console.log("done")
+// // درس رقم 16 عبراة شرطية جديدة وهي switch case:
+// var health = "stroing"
+// switch (health){
+//     case ("stroing"):
+//         console.log("your health is very good")
+//         break
+//     case ("week"):
+//         console.log("your health is not good")
+//         break
+//     case ("so week"):
+//         console.log("your health is never good")
+//         break    
+//     default:
+//         console.log("good")
+// }
+//درس رقم 17 جزء 2 لحل مهمة واحد لحساب كتلة الجيم من خلال قانون الكتلة كالتالي:
+// document.getElementById("submit-btn").addEventListener("click", function(){
+//     var weight = document.getElementById("weight-input").value
+//     var height = document.getElementById("height-input").value
+//     var bmi = weight/(height*height)
+//     document.getElementById("bmi").innerHTML = bmi
+//     var bmicategory = "نحيف"
+//     if (bmi < 18){
+//         bmicategory = "نحيف"
+//    }else if (bmi < 24.9){
+//     bmicategory = "وزن مثالي"
+//    }else if (bmi < 29.9){
+//     bmicategory = "وزن زائد"
+//    }else if (bmi < 34.9){
+//     bmicategory = "سمنة درجة أولى"
+//    }else if (bmi < 39.9){
+//     bmicategory = "سمنة درجة ثانية"
+//    }else{
+//     bmicategory = "سمنة خطيرة"
+//    }
+//     document.getElementById("bmi-category").innerHTML = bmicategory
+
+// })
+
+// درس رقم 18 المصفوفات arrays
+// var students = ["shatha", "mohmmed", "yazan", "ayat", "motaseem"]
+// document.getElementById("students").innerHTML = students
+// درس رقم 20 العمليات على المصفوفات
+/* نشوف الدوال الي تجري على المصفوفات يعني العمليات الي بنمارسها عليها:*/
+// var students = ["shatha", "mohmmed", "yazan", "ayat", "motaseem", "zain", "sally"]
+// document.getElementById("students").innerHTML = students
+// students.push("ammr")
+// console.log(students)
+// students [5] = "smsmlolo"
+// console.log(students)
+// students. pop()
+// console.log(students)
+// درس رقم 20 تكملة للدرس السابق والي رح تكون بتحكي عن دالة سبلاس إلى بتضيف وتحذف  أكثر من قيمة وبتحذف وبتحط محله قيمة وبتحذف  
+// var students = ["shatha", "mohmmed", "yazan", "ayat", "motaseem", "zain", "sally"]
+// document.getElementById("students").innerHTML = students
+// console.log(students)
+// students.splice(3,0,"ammr")
+// console.log(students)
+// students.splice(6,2)
+// console.log(students)
+// students.splice(1,0,"smsmlolo")
+// console.log(students)
+// students.splice(4,1)
+// console.log(students)
+// درس رقم 21 الجزء الثاني حل تحدي المصفوفات
+// var nams = []
+// document.getElementById("submit2-btn").addEventListener("click", function(){
+//     var name = document.getElementById("arr-input").value
+//     nams.push(name)
+
+//     document.getElementById("nams").innerHTML = nams
+//     document.getElementById("arr-input").value = ""
+// })
+// document.getElementById("delet-btn").addEventListener("click", function(){
+//     nams.pop()
+//     document.getElementById("nams").innerHTML = nams
+
+// })
+// for (var number = 1; number<= 100;number++){
+//     console.log(number)
+// }
+// for (var c = 0; c <= 30;c++){
+//     document.getElementById("result-loop").innerHTML += `10x${c}=${c*10}</br>`
+// }
+// استخدام الloops  مع الstring
+// var nam = "ayat ali obeidat"
+// for(var n =0; n< nam.length; n++){
+//     console.log(nam [n])
+// }
+// for(var m in nam){
+//     console.log(nam [m])
+// }
+// for(var w of nam){
+//     console.log(w)
+// }
+// document.getElementById("submit").addEventListener("click", function(){
+//     document.getElementById("ruslt-los").innerHTML = ""  
+//     var telo = document.getElementById("text").value
+//     var arrlo = ["a","e","i","o","u"]
+//     for(var t of telo){
+//         var p = t.toLowerCase()
+//         if(!arrlo.includes(p)){
+//             document.getElementById("ruslt-los").innerHTML += `${t} </br>`
+//         }
+//     }
+// })
+// var school = ["T.reem","T.mera","me","aya","eman",]
+// for( var tetch =0;tetch < school.length; tetch++){
+//     if(school[tetch][0] == "T")
+//     document.getElementById("school").innerHTML += `${school[tetch]} </br>`}
+// درس رقم 32  والي هو الfunction
+// function sendmessage () {
+//     console.log("hi")
+//     console.log("am ayat")
+//     console.log("am 23years")
+//     console.log("how are you?")
+// }
+// sendmessage()
+// درس رقم 33  والي هو الfunction
+// function sendmessage (name) {
+//     console.log("hi")
+//     console.log("am"  + name)
+//     console.log("am 23years")
+//     console.log("how are you?")
+// }
+// sendmessage(" ayat")
+// sendmessage(" shatha")
+// sendmessage(" mohmmed")
+// sendmessage(" yazan")
+// sendmessage(" motasem")
+// درس رقم 34 والمتعلق بالمدخلات المتعددة في ال function
+// function sendmessage () {
+//     var x = 4*4
+//     console.log(x)
+// }
+// sendmessage ()
+// function number (name1,name2) {
+//     var c = name1*name2
+//     console.log(c)
+// }
+// number (5,4)
+
+// function number (man1=10,man2=32) {
+//     var d = man1+man2
+//     console.log(d)
+// }
+// number ()
+// درس رقم 35 حول مخرجات الدوال
+// function number (man1=10,man2=32) {
+//     var d = man1+man2
+//     return d
+// }
+// console.log("this is number:" + number())
+//  درس رقم 38 حول أمثلة حول الدوال عديمة الاسم وال  call back
+/*هناك 3 دوال كالتالي:*/
+// setTimeout(function()
+// {console.log("good job")}, 3000)
+// setInterval(function()
+// {console.log("exllent job")}, 3000)
+// var arr = [10,20,30,40,50]
+// arr.forEach(function(element){
+//     console.log(element * 50)
+// })
+// هون رح نحل تحدي درس 38 الجزء 2 وذلك يعتمد على الدرس السابق  الخاص بالدوال عديمة الاسم 
+
+
+// درس رقم 39 حول ال Arrow function
+// var y = () => {
+//     console.log("ayat")
+// }
+// y()
+// function test (callBack){
+//     callBack()
+// }
+// test ( () =>{
+//     console.log("marrhba ayat")
+// })
+// حل تحدي درس رقم 42 الجزء الثاني
+// function cumulative_addition(elements_array) {
+// let total = elements_array. reduce(function(brev, currt){
+//     return brev+currt
+// })
+// var arr = [total, elements_array.length]
+// return arr
+// }
+// حل تحدي درس رقم 43 درس ال object
+// let student = {
+//     name: "ayat",
+//     age: 23,
+//     study: "socil work",
+//     univarsete: "univarsete of jordan"
+// }
+// console.log(student)
+/*(درس رقم 44)وازا بدنا نضيف على الobject مثلا key معين هيك بنعمل*/
+/* بنستدعي الأبجكت وبعدها نقطة واسم الkey*/
+// student. food = "shawrrma"
+// console.log(student)
+// student. food = "shawrrma"
+// console.log(student)
+// student.study= "socil work, prgraming",
+// console.log(student)
+// object درس 45 مصفوفة جواتها عدد من الكائنات يعني الكثير من الأبجكت 
+// let studens = [
+// {
+//     name: "ayat",
+//     age: 23,
+//     study: "socil work",
+//     univarsete: "univarsete of jordan"
+// },
+// {
+//     name: "aya",
+//     age: 23,
+//     study: "socil work",
+//     univarsete: "univarsete of jordan"
+// },
+// {
+//     name: "hayat",
+//     age: 23,
+//     study: "socil work",
+//     univarsete: "univarsete of jordan"
+// },
+// {
+//     name: "haya",
+//     age: 23,
+//     study: "socil work",
+//     univarsete: "univarsete of jordan"
+// },
+// {
+//     name: "ayoot",
+//     age: 23,
+//     study: "socil work",
+//     univarsete: "univarsete of jordan"
+// }
+// ]
+// console.log(studens)
+// for(el of studens){
+//     let concet =`
+//      <tr> 
+//         <td>${el.name}</td>
+//         <td>${el.age}</td>
+//         <td>${el.study}</td>
+//         <td>${el.univarsete}</td>
+
+//      </tr> 
+//     `
+
+//     document.getElementById("studens").innerHTML += concet
+// }
+// let messagElment = document.getElementById("message")
+// let isSubmitted = false
+// function nameinputchange(input){
+//  document.getElementById("currentName").innerHTML = input.value
+// }
+//  document.getElementById("submit-btn").addEventListener("click", function(){
+//     if(!isSubmitted){
+//         isSubmitted = true
+//         messagElment.innerHTML = ""
+//     }
+//    let value = document.getElementById("name-input").value
+//    /*بنقدر نخلي قيمة الانبت تطلع في الاتش
+//    2 من خلال عبارة الديكومنت للمسج والانر اتت تي ام ال += تكون تساوي
+//      الفاليو الي هو المتغير الي احفظنا فيه قيمة الانبت*/
+//      /* بس نحنا بدنا انوع بين جميع الطرق الي أخذناها ونستخدمها*/
+//     let textNod = document.createTextNode(value)
+//     messagElment.appendChild(textNod)
+//     let brElement = document.createElement("br")
+//     messagElment.appendChild(brElement)
+//  })
+//  messagElment.addEventListener("mouseover", function(){
+//         if(isSubmitted){
+//         this.style.background = `green` 
+//         }else{
+//                   this.style.background = `red`   
+//              }
+
+//     })
+//     messagElment.addEventListener("mouseout", function(){
+//         this.style.background = `white` 
+//     })
+// درس رقم 55 مكتبات الجافا سيكربت وتحديدا ممكتبة الأنمييشن
+/*هي الرابط تبع موقع المكتبة من جوجل 
+https://animejs.com/*/
+/*وهاد علو جت هب
+https://github.com/juliangarnier/anime*/
+/* وهاد المثال على هاي المكتبة كالتالي*/
+    // anime({
+    //     targets: 'div',
+    //     translateX: 250,
+    //     rotate: '1turn',
+    //     backgroundColor: '#FFF',
+    //     duration: 800
+    // });
+// درس رقم 56 حول مكتبة الجيكويري
+    // $("#scText").html("ayat")
+    // $("#scText").click(function(){
+    //     $(this).html("ayoot")
+    // })
+    // $("#scText").on("dblclick",function(){
+    //     $(this).html("ayatoo")
+    // })
+</script> -->
 <script>
-    var number1 = 10
-    var number2 = 4
-    var sum = number1 + number2
-    var sub = number1 - number2
-    var mult = number1 * number2
-    var div = number1 / number2
-    var mod = number1 % number2
-    var message = 'First number is:${number1}\n Second number is:${number2}\n Sum is:${sum} Sub is:${sub}\n Mult is:${mult}\n Div is:${div}\n Mod is:${mod}'
-    console.log(message)
-    //في غلط مش عارفة من وين بعدين بنشوف
-    // بدل ما اضل اكتب ؤخىسخمث تحت كل وحدة، بروح بعرف كمان متغير وبحط فيه كل قيم النتيجة، كما في الشكل التالي:
-    // var massag = 'first number is:${number1}\nsecond number is:${number2}\nsum is:${sum}\nsub is:${sub}\nmult is:${mult}\ndiv is:${div}\nmod is:${mod}'
-    document.getElementById("result").innerHTML = message
-    
+let taskes = [
+    {
+        "title": "قراءة كتاب",
+        "date": "11-2-2023",
+         "isDone": true
+    },
+    {
+        "title": "إنهاء المشروع النهائي",
+        "date": "11-2-2023",
+         "isDone": false
+    },
+    {
+        "title": "الخاتمة",
+        "date": "11-2-2023",
+         "isDone": false
+    },
+    {
+        "title": "إنهاء كورس جافا سيكربت",
+        "date": "11-2-2023",
+         "isDone": true
+    }
+]
+function getTaskStrge (){
+  let retrevTasks = JSON.parse(localStorage.getItem("tasks"))
+//   if (retrevTasks == null){
+//     taskes = []
+//   }else{
+//     taskes = retrevTasks
+//   }
+taskes = retrevTasks ?? []
+}
+getTaskStrge ()
+function fullStak (){
+document.getElementById("taskes").innerHTML = ""
+let content = "";
+
+let index = 0;
+
+for (task of taskes){
+ content += `<h1 class="">
+                <div class="task ${task.isDone ? 'done': ''}">
+                    <!-- هاد الدف للعنوان والتاريخ -->
+                    <div style="width: 70%">
+                        <h2>${task.title}</h2>
+                        <div>
+                            <span class="material-symbols-outlined">
+                                calendar_month
+                                </span> <span>${task.date}</span>
+                        </div>
+                    </div>
+                    <!-- هاد الدف للتعديل والحذف والهدف المنجز  -->
+                    <div style="display: flex; justify-content:space-between; align-items: center;width: 20%;">
+                        <button onClick= "deleteTask(${index})" class="circular" style="background: rgb(148, 30, 30); color: rgba(255, 255, 255, 0.918);"><span class="material-symbols-outlined">
+                            delete
+                            </span></button>
+                        ${task.isDone ? `      
+                        <button onClick="togglTaskcompletion(${index})" class="circular" style="background: rgb(181, 0, 101); color: rgb(255, 255, 255);"><span class="material-symbols-outlined">
+                            cancel
+                            </span></button>`: `<button onClick="togglTaskcompletion(${index})" class="circular" style="background: rgb(44, 148, 30); color: rgb(255, 255, 255);"><span class="material-symbols-outlined">
+                            done
+                            </span></button>`} 
+
+                        <button  onClick="update(${index})" class="circular" style="background: rgb(12, 47, 99); color: rgb(255, 255, 255);"><span class="material-symbols-outlined">
+                            edit
+                            </span></button>
+                    </div>
+                </div>
+                
+                   </h1>`; 
+                   index++
+
+                }
+
+                document.getElementById("taskes").innerHTML = content;
+            }
+    fullStak ()
+    document.getElementById("circular-btn").addEventListener("click", function(){
+    let  now = new Date()
+    let date = now.getDate()+"/"+(now.getMonth()+1)+"/"+now.getFullYear()
+    let taskName = prompt("الرجاء إدخال عنوان المهمة")
+    let taskObj = {
+        "title": taskName,
+        "date": date,
+        "isDone": false
+                  }
+    taskes.push(taskObj)
+    storeTasks ()
+    fullStak ()
+    }) 
+    function deleteTask (index){
+        let task = taskes[index]
+        console.log(task)
+        let isconfirmed = confirm("هل أنت متأكد من حذف مهمة  " + task.title)
+        if(isconfirmed){
+            taskes.splice(index,1)
+            storeTasks ()
+            fullStak ()
+        }
+    }
+    function update(index) {
+        let proudet = prompt("أرجاء أدخال اسم المهمة الجديد:",)
+        let task = taskes[index]
+        task.title = proudet
+        storeTasks ()
+        fullStak ()
+
+    }
+    function togglTaskcompletion (index) {
+        let task = taskes[index]
+        // if(task.isDone){
+        //     task.isDone = false 
+        // }else{
+        //     task.isDone = true
+        // }
+        /*طريقة مختصرة وبتعطي نفس النتيجة كالتالي*/
+        task.isDone = !task.isDone
+        storeTasks ()
+        fullStak ()
+    }
+    function storeTasks () {
+        let tasksString = JSON.stringify(taskes)
+    localStorage.setItem("tasks",tasksString)
+    }
+
 </script>
 
 </html>
